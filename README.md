@@ -1,4 +1,4 @@
-# IndicadoresMacro
+# Indicadores Macroeconômicos para Análise
 
 Pipeline para **baixar, limpar e consolidar** indicadores macroeconômicos (Brasil e exterior) e rodar modelos de séries temporais (**VAR, VECM, PCA–ARX, Markov-Switching**).  
 A saída principal é um Excel mensal `indicadores_macro.xlsx` e um relatório LaTeX com metodologia e resultados.
