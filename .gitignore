@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.env
+.venv/
+venv/
+
+# IDEs/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Dados e saídas locais
+*.xlsx
+*.csv
+*.parquet
+*.pkl
+
+# Credenciais/keys
+*.key
+*.pem
+
+# Figuras grandes (desative se quiser versionar)
+# *.png
+# *.jpg

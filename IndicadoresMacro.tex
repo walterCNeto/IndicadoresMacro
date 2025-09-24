@@ -1,0 +1,299 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Pacotes ----------
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=2.2cm}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,}, group-separator={.}}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue
+}
+
+\title{Painel de Indicadores Macro -- Brasil (Guia de Referência)}
+\author{Walter C. Neto (organização) }
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este documento compila definições, métricas usuais de leitura e fontes de dados abertas para um conjunto abrangente de indicadores macroeconômicos do Brasil (e alguns externos relevantes). O objetivo é servir como referência prática para montagem de painéis, relatórios e modelos. Sempre que possível, aponta-se a fonte primária oficial (IBGE, BCB, Tesouro, Secex/MDIC, FGV, etc.) e alternativas abertas.
+\end{abstract}
+
+\section{Convenções e boas práticas}
+\begin{itemize}
+  \item \textbf{\% aa}: variação percentual em relação ao mesmo período do ano anterior (\emph{year-over-year}).
+  \item \textbf{\% 12m}: acumulado nos últimos 12 meses (soma ou média, conforme a série).
+  \item \textbf{Acumulado no ano (YTD)}: soma (ou média) de janeiro até o último mês disponível.
+  \item \textbf{Dessazonalização}: quando avaliar dinâmica mensal/trimestral, prefira séries dessazonalizadas (IBGE/BCB costumam publicar ambas).
+  \item \textbf{Escala relativa}: para crédito e fiscal, prefira \% do PIB para comparabilidade intertemporal.
+  \item \textbf{Taxas reais}: sempre que possível, avaliar juros reais (nominal menos expectativa de IPCA) e câmbio real efetivo.
+\end{itemize}
+
+\section{Atividade Econômica}
+\subsection*{PIB (\% aa)}
+\textbf{Definição}: variação real do Produto Interno Bruto em relação ao mesmo período do ano anterior.\\
+\textbf{Métrica usual}: \% aa (trimestre vs. mesmo trimestre do ano anterior); para tendência, use dessazonalizado \emph{qoq}.\\
+\textbf{Frequência}: trimestral. \textbf{Fonte}: IBGE -- Contas Nacionais (\url{https://www.ibge.gov.br}).
+
+\subsection*{IBC-Br (proxy mensal do PIB)}
+\textbf{Definição}: índice de atividade do BCB que aproxima a dinâmica do PIB.\\
+\textbf{Métrica usual}: \% m/m dessaz., \% aa e \% 12m. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB/SGS (séries públicas; \url{https://www.bcb.gov.br}).
+
+\subsection*{PIM -- Produção Industrial (\% 12m)}
+\textbf{Definição}: volume da indústria de transformação e extrativa.\\
+\textbf{Métrica usual}: \% 12m e \% aa; dessaz. m/m para curto prazo. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: IBGE -- PIM-PF.
+
+\subsection*{PMC -- Varejo Ampliado (\% 12m)}
+\textbf{Definição}: volume de vendas no varejo ampliado (inclui veículos e materiais de construção).\\
+\textbf{Métrica usual}: \% 12m, \% aa; dessaz. m/m. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: IBGE -- PMC.
+
+\subsection*{PMS -- Serviços (\% 12m)}
+\textbf{Definição}: volume de serviços prestados.\\
+\textbf{Métrica usual}: \% 12m, \% aa; dessaz. m/m. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: IBGE -- PMS.
+
+\subsection*{NUCI (Utilização da Capacidade Instalada)}
+\textbf{Definição}: percentual da capacidade produtiva efetivamente utilizada.\\
+\textbf{Métrica usual}: nível (\%). \textbf{Frequência}: mensal.\\
+\textbf{Fontes}: CNI/FGV (\url{https://portaldaindustria.com.br}, \url{https://portal.fgv.br}).
+
+\subsection*{Construção (INCC / PIB Construção)}
+\textbf{Definição}: custos da construção (INCC) e valor adicionado do setor.\\
+\textbf{Métrica usual}: INCC \% 12m; PIB Construção \% aa. \textbf{Frequência}: mensal/trimestral.\\
+\textbf{Fontes}: FGV (INCC), IBGE (PIB setorial).
+
+\subsection*{CAGED e Renda Real}
+\textbf{Definição}: empregos formais (saldo de admissões/dispensas) e renda real habitual (PNAD).\\
+\textbf{Métrica usual}: variações e níveis. \textbf{Frequência}: mensal.\\
+\textbf{Fontes}: MTE/CAGED; IBGE/PNAD.
+
+\subsection*{PMIs (Manufatura/Serviços)}
+\textbf{Definição}: índices de gerentes de compras, sinal antecedente de atividade.\\
+\textbf{Métrica usual}: difusão (50 = neutro). \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: S\&P Global (divulgação pública, séries resumidas).
+
+\section{Preços e Inflação}
+\subsection*{IPCA (cheio) e IPCA livre}
+\textbf{Definição}: índice oficial de inflação (cheio) e recorte de preços livres.\\
+\textbf{Métrica usual}: acumulado no ano (YTD), \% 12m, \% m/m; núcleos. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: IBGE -- IPCA (\url{https://www.ibge.gov.br}).
+
+\subsection*{IGP-M}
+\textbf{Definição}: índice amplo (atacado + construção + consumidor); sensível a câmbio/commodities.\\
+\textbf{Métrica usual}: \% 12m, YTD. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: FGV/IBRE.
+
+\subsection*{Núcleos (médias aparadas, dupla ponderação), Difusão, Serviços subjacentes}
+\textbf{Definição}: medidas que filtram choques voláteis e mapeiam a amplitude das pressões.\\
+\textbf{Métrica usual}: \% 12m e \% m/m anualizado; difusão (\%). \textbf{Frequência}: mensal.\\
+\textbf{Fontes}: BCB (Relatório de Inflação), IBGE (microdados), FGV.
+
+\subsection*{Expectativas Focus (12m/24m)}
+\textbf{Definição}: expectativas de mercado para inflação, PIB, câmbio e Selic.\\
+\textbf{Métrica usual}: mediana, dispersão. \textbf{Frequência}: diária/semanal.\\
+\textbf{Fonte}: BCB -- Sistema Focus (\url{https://www.bcb.gov.br}).
+
+\subsection*{Breakeven de Inflação}
+\textbf{Definição}: inflação implícita nos preços de NTN-B vs. prefixados.\\
+\textbf{Métrica usual}: \% a.a. por vértice. \textbf{Frequência}: diária.\\
+\textbf{Fontes}: B3/ANBIMA (\url{https://www.anbima.com.br}).
+
+\section{Política Monetária e Condições Financeiras}
+\subsection*{Taxa Selic (\% a.a.)}
+\textbf{Definição}: meta da taxa básica definida pelo Copom.\\
+\textbf{Métrica usual}: nível e trajetória; Selic real ex-ante = Selic -- expectativa IPCA.\\
+\textbf{Frequência}: diária (efetiva), decisões bimestrais. \textbf{Fonte}: BCB/SGS.
+
+\subsection*{Curva DI e Swaps DI x IPCA}
+\textbf{Definição}: estrutura a termo de juros nominais e reais.\\
+\textbf{Métrica usual}: vértices (1y, 2y, 5y, 10y), inclinação. \textbf{Frequência}: intradiária.\\
+\textbf{Fontes}: B3/ANBIMA.
+
+\subsection*{Índice de Condições Financeiras (ICF)}
+\textbf{Definição}: agrega juros, câmbio, bolsa, crédito em um único indicador.\\
+\textbf{Métrica usual}: desvio em relação à média histórica. \textbf{Frequência}: semanal/mensal.\\
+\textbf{Fontes}: BCB (estudos), casas de análise (metodologias abertas ou proprietárias).
+
+\subsection*{Agregados Monetários (M1/M2) e crédito-PIB gap (BIS)}
+\textbf{Definição}: liquidez e possíveis excessos/escassez financeiras.\\
+\textbf{Métrica usual}: \% aa, desvios vs. tendência. \textbf{Frequência}: mensal/trimestral.\\
+\textbf{Fontes}: BCB/SGS; BIS para credit-gap (\url{https://www.bis.org}).
+
+\section{Fiscal}
+\subsection*{Resultado Primário (R\$ bi) e (\% do PIB)}
+\textbf{Definição}: receitas menos despesas não financeiras do setor público.\\
+\textbf{Métrica usual}: fluxo 12m (\% PIB) e YTD (R\$ bi). \textbf{Frequência}: mensal.\\
+\textbf{Fontes}: Tesouro Nacional (STN), BCB -- Resultado Fiscal.
+
+\subsection*{Resultado Nominal (\% PIB) e Juros Nominais}
+\textbf{Definição}: primário menos/mais juros nominais.\\
+\textbf{Métrica usual}: \% do PIB. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB -- Estatísticas Fiscais.
+
+\subsection*{Dívida Bruta e Líquida (\% do PIB)}
+\textbf{Definição}: estoques de dívida do governo geral e setor público líquido.\\
+\textbf{Métrica usual}: \% do PIB; composição por indexador/prazo. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB -- Estatísticas Fiscais.
+
+\section{Setor Externo}
+\subsection*{Balança Comercial (US\$)}
+\textbf{Definição}: exportações menos importações de bens.\\
+\textbf{Métrica usual}: mensal, acumulados 12m e no ano. \textbf{Frequência}: diária/mensal.\\
+\textbf{Fonte}: Secex/MDIC -- Comex Stat (\url{https://www.gov.br/mdic}).
+
+\subsection*{Conta Corrente (\% PIB), IED (US\$) e Reservas (US\$)}
+\textbf{Definição}: transações correntes, investimento estrangeiro direto e colchão de reservas.\\
+\textbf{Métrica usual}: conta corrente em \% PIB; IED e Reservas em US\$. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB -- Setor Externo.
+
+\subsection*{Taxa de Câmbio (BRL/USD) e EUR/USD}
+\textbf{Definição}: preço do dólar/euro.\\
+\textbf{Métrica usual}: nível, volatilidade e \% depreciação/apreciação. \textbf{Frequência}: diária/intradiária.\\
+\textbf{Fontes}: BCB (PTAX/boletins), provedores de preço abertos (p.ex., \url{https://stooq.com}, \url{https://finance.yahoo.com} -- \emph{dados de mercado, não oficiais}).
+
+\subsection*{Câmbio Real Efetivo (REER) e Termos de Troca}
+\textbf{Definição}: competitividade cambial ajustada por inflação; relação de preços de exportações/importações.\\
+\textbf{Métrica usual}: índices (base=100). \textbf{Frequência}: mensal/trimestral.\\
+\textbf{Fontes}: BCB (REER), IBGE/Secex/FGV (ToT).
+
+\section{Crédito e Mercado Financeiro}
+\subsection*{Crédito Doméstico (R\$ bi) e \% do PIB}
+\textbf{Definição}: estoque total de operações de crédito do SFN.\\
+\textbf{Métrica usual}: nível (R\$ bi) e \% do PIB; concessões mensais. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB -- Estatísticas de Crédito.
+
+\subsection*{Crédito PF/PJ (\% PIB)}
+\textbf{Definição}: estoques por segmento.\\
+\textbf{Métrica usual}: \% do PIB, composição (livres/direcionados). \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB.
+
+\subsection*{Endividamento PF (\% da Renda)}
+\textbf{Definição}: razão dívida/renda das famílias.\\
+\textbf{Métrica usual}: nível (\%); complemento: comprometimento de renda com juros/parcelas. \textbf{Frequência}: mensal/trimestral.\\
+\textbf{Fonte}: BCB.
+
+\subsection*{Inadimplência (90+ dias, recursos livres) PF/PJ e Agregado}
+\textbf{Definição}: razão das operações em atraso $>$90 dias sobre o estoque.\\
+\textbf{Métrica usual}: \% (final do período e média do ano). \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB.
+
+\subsection*{Spreads de Crédito e Prazo Médio}
+\textbf{Definição}: diferença entre taxa cobrada e custo de captação; maturidade média das operações.\\
+\textbf{Métrica usual}: p.p. e meses. \textbf{Frequência}: mensal.\\
+\textbf{Fonte}: BCB.
+
+\subsection*{Bolsa e Índices}
+\textbf{Ibovespa / S\&P 500}: níveis e retornos; pró-cíclicos. \\
+\textbf{Fontes}: B3 (\url{https://www.b3.com.br}); dados abertos alternativos: Stooq/Yahoo (não oficiais).
+
+\subsection*{CDS Brasil, EMBI+, VIX, CRB}
+\textbf{Definição}: risco soberano (CDS), spreads emergentes (EMBI+), aversão a risco (VIX), commodities (CRB).\\
+\textbf{Métrica usual}: bps (CDS/EMBI+), nível (VIX/CRB). \textbf{Frequência}: diária.\\
+\textbf{Fontes}: \emph{Mercado/proprietárias} (J.P. Morgan para EMBI+); alternativas públicas/abertas: TradingEconomics (licença própria), Stooq/Yahoo para cotações.
+
+\section{Indicadores Externos Relevantes}
+\subsection*{PIB EUA (\% aa)}
+\textbf{Definição}: crescimento real do PIB americano.\\
+\textbf{Métrica usual}: \% aa. \textbf{Frequência}: trimestral.\\
+\textbf{Fonte}: BEA (\url{https://www.bea.gov}).
+
+\subsection*{Fed Funds (média da banda, fim de período) e Treasury 10y}
+\textbf{Definição}: taxa básica dos EUA e juros de 10 anos.\\
+\textbf{Métrica usual}: \% a.a. \textbf{Frequência}: diária/reuniões FOMC.\\
+\textbf{Fontes}: Federal Reserve, U.S. Treasury; séries via FRED (\url{https://fred.stlouisfed.org}).
+
+\subsection*{Commodities-chave (Brent, Minério, Soja)}
+\textbf{Definição}: preços internacionais sensíveis para o Brasil.\\
+\textbf{Métrica usual}: US\$ por barril/ton/saco; variações \% 12m. \textbf{Frequência}: diária.\\
+\textbf{Fontes}: CME/ICE (mercado); consolidados abertos em Stooq/Yahoo; ANP (\url{https://www.gov.br/anp}) para séries locais.
+
+\bigskip
+\section*{Notas sobre acesso a dados (APIs e portais)}
+\begin{itemize}
+  \item \textbf{BCB/SGS}: séries temporais econômicas (\url{https://www3.bcb.gov.br/sgspub/}); também via \emph{Olinda/BCB} e pacote \texttt{python-bcb}.
+  \item \textbf{IBGE/SIDRA}: consultas tabulares e APIs (\url{https://sidra.ibge.gov.br}).
+  \item \textbf{Tesouro Nacional}: resultado do Tesouro e estatísticas fiscais (\url{https://www.tesourotransparente.gov.br}).
+  \item \textbf{Secex/Comex Stat}: balança comercial (\url{https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas}).
+  \item \textbf{FGV/IBRE}: IGPs, INCC, índices de confiança (\url{https://portalibre.fgv.br}).
+  \item \textbf{B3/ANBIMA}: curvas, preços de títulos, estatísticas de mercado (\url{https://www.anbima.com.br}).
+  \item \textbf{FRED/BEA}: séries dos EUA e globais (\url{https://fred.stlouisfed.org}, \url{https://www.bea.gov}).
+  \item \textbf{Alternativas abertas}: \url{https://stooq.com}, \url{https://finance.yahoo.com} (uso não-oficial para cotações).
+\end{itemize}
+
+\clearpage
+\appendix
+\section{Tabela-resumo dos indicadores}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{p{4.1cm} p{6.8cm} p{3.2cm} p{3.6cm}}
+\toprule
+\textbf{Indicador} & \textbf{Definição} & \textbf{Métrica usual} & \textbf{Fonte (dados abertos)}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Indicador} & \textbf{Definição} & \textbf{Métrica usual} & \textbf{Fonte}\\
+\midrule
+\endhead
+PIB (Brasil) & Variação real do produto & \% aa; dessaz. qoq & IBGE/SIDRA \\
+IBC-Br & Proxy mensal do PIB & \% m/m, \% aa, \% 12m & BCB/SGS \\
+PIM & Produção industrial & \% 12m, \% aa, m/m dessaz. & IBGE \\
+PMC (ampliado) & Vendas varejo + veículos & \% 12m, \% aa, m/m dessaz. & IBGE \\
+PMS & Volume de serviços & \% 12m, \% aa, m/m dessaz. & IBGE \\
+NUCI & Utilização da capacidade & Nível (\%) & CNI/FGV \\
+INCC & Custo da construção & \% 12m, YTD & FGV/IBRE \\
+CAGED & Emprego formal & Saldo mensal & MTE \\
+Renda real & Rendimento habitual & \% aa, nível & IBGE/PNAD \\
+PMI (BR) & Sinal antecedente & Difusão (50=neutro) & S\&P Global (divulgação) \\
+IPCA (cheio) & Inflação oficial & \% m/m, \% 12m, YTD & IBGE \\
+IPCA livre & Preços livres do IPCA & \% m/m, \% 12m, YTD & IBGE \\
+Núcleos/Difusão & Tendência subjacente & \% 12m; difusão (\%) & BCB/IBGE \\
+Expectativas Focus & Expectativas de mercado & Mediana (12/24m) & BCB/Focus \\
+Breakeven (NTN-B) & Inflação implícita & \% a.a. por vértice & ANBIMA/B3 \\
+Selic & Taxa básica de juros & \% a.a. (meta/efetiva) & BCB \\
+Curva DI / Swaps & Estrutura a termo & Vértices, inclinação & B3/ANBIMA \\
+ICF & Condições financeiras & Desvio da média & BCB/estudos \\
+Agregados M1/M2 & Liquidez monetária & \% aa, nível & BCB \\
+Crédito total & Estoque de crédito & R\$ bi e \% PIB & BCB \\
+Crédito PF/PJ & Estoques por segmento & \% PIB & BCB \\
+Concessões & Fluxo novo de crédito & R\$ bi; \% aa & BCB \\
+Spreads/prazo & Preço e maturidade & p.p.; meses & BCB \\
+Endividamento PF & Dívida/Renda & \% & BCB \\
+Inadimplência PF/PJ & Atraso $>$90d (livres) & \% (final/média) & BCB \\
+Ibovespa & Índice de ações BR & Nível/retorno & B3 \\
+Balança comercial & Exp -- Imp de bens & US\$ mensal, 12m & Secex/MDIC \\
+Conta corrente & Transações correntes & \% PIB & BCB \\
+IED & Invest. direto & US\$ mensal & BCB \\
+Reservas & Reservas internacionais & US\$ & BCB \\
+Câmbio BRL/USD & Preço do dólar & Nível; var.\% & BCB (PTAX) \\
+REER & Câmbio real efetivo & Índice & BCB \\
+Termos de troca & Export vs import & Índice & IBGE/Secex/FGV \\
+PIB EUA & Crescimento EUA & \% aa & BEA \\
+Fed Funds & Taxa básica EUA & \% a.a. & Federal Reserve/FRED \\
+Treasury 10y & Juros EUA 10 anos & \% a.a. & UST/FRED \\
+S\&P 500 & Bolsa EUA & Nível/retorno & Dados de mercado \\
+CDS Brasil & Risco soberano & bps & Mercado (altern.: TradingEconomics) \\
+EMBI+ & Spread emergentes & bps & J.P. Morgan (resumos públicos) \\
+VIX & Vol. implícita S\&P & Nível & Cboe (resumos) \\
+CRB & Commodities amplas & Índice & Dados de mercado \\
+Brent/Minério/Soja & Commodities BR-relev. & US\$; var.\% & Mercado (Stooq/Yahoo c/ ressalva) \\
+\bottomrule
+\end{longtable}
+
+\end{document}
